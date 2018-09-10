@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div v-if="role==3">
+    <div v-if="role==4">
     <GroupTitle>个人概况</GroupTitle>
     <Flexbox :gutter="16">
       <FlexboxItem>
@@ -10,7 +10,7 @@
     <GroupTitle>今日课程</GroupTitle>
       <myCourse></myCourse>
     </div>
-    <div v-else="role==4">
+    <div v-else-if="role==3">
       <GroupTitle>班级趋势</GroupTitle>
       <Flexbox :gutter="16">
         <FlexboxItem>
@@ -40,7 +40,7 @@
       <GroupTitle>系部概况</GroupTitle>
       <Flexbox>
         <FlexboxItem>
-          <chartSwiper></chartSwiper>
+          <chartSwiper :charts="chart"></chartSwiper>
         </FlexboxItem>
       </Flexbox>
     </div>
@@ -61,22 +61,30 @@
       return {
         siginValue: {},
         chart: [],
-        role:'4'
+        role:'5'
       }
     },
     mounted() {
-      if(this.role==4) {
-        axios('https://www.easy-mock.com/mock/5b902cd275d00c6196a36b94/example/123456#!method=get')
+      if(this.role==3) {
+        axios('https://www.easy-mock.com/mock/5b902cd275d00c6196a36b94/example/123321#!method=get')
           .then(res => {
-            this.siginValue = res.data.data.percent
             this.chart = res.data.data.chart
           })
       }
-        if(this.role==3){
-          axios('https://www.easy-mock.com/mock/5b902cd275d00c6196a36b94/example/123321 #!method=get')
+        if(this.role==4){
+          axios('https://www.easy-mock.com/mock/5b902cd275d00c6196a36b94/example/123456#!method=get')
             .then(res => {
+              this.siginValue = res.data.data.percent
               this.chart = res.data.data.chart
             })
+      }
+      if(this.role!=4||this.role!=3){
+        axios('https://www.easy-mock.com/mock/5b47fcbebad3321130bf0ab0/sigin_copy/department/counselor#!method=get')
+          .then(res => {
+            console.log(res.data);
+            this.siginValue = res.data.data.percent;
+            this.chart = res.data.data.chart
+          })
       }
     }
   }
