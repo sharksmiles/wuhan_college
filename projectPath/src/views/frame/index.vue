@@ -18,9 +18,9 @@
         </FlexboxItem>
       </Flexbox>
       <GroupTitle>班级概况</GroupTitle>
-      <Flexbox>
+      <Flexbox style="width: 100%">
         <FlexboxItem>
-          <chartSwiper></chartSwiper>
+          <chartSwiper :charts="charts"></chartSwiper>
         </FlexboxItem>
       </Flexbox>
     </div>
@@ -61,7 +61,8 @@
       return {
         siginValue: {},
         chart: [],
-        role:'5'
+        charts:[],
+        role:'3'
       }
     },
     mounted() {
@@ -69,23 +70,25 @@
         axios('https://www.easy-mock.com/mock/5b902cd275d00c6196a36b94/example/123321#!method=get')
           .then(res => {
             this.chart = res.data.data.chart
-          })
+        this.charts = res.data.data.charts
+      })
       }
-        if(this.role==4){
-          axios('https://www.easy-mock.com/mock/5b902cd275d00c6196a36b94/example/123456#!method=get')
-            .then(res => {
-              this.siginValue = res.data.data.percent
-              this.chart = res.data.data.chart
-            })
+      else if(this.role==4){
+        axios('https://www.easy-mock.com/mock/5b902cd275d00c6196a36b94/example/123456#!method=get')
+          .then(res => {
+          this.chart = res.data.data.chart
+      })
       }
-      if(this.role!=4||this.role!=3){
+      else{
         axios('https://www.easy-mock.com/mock/5b47fcbebad3321130bf0ab0/sigin_copy/department/counselor#!method=get')
           .then(res => {
-            console.log(res.data);
-            this.siginValue = res.data.data.percent;
-            this.chart = res.data.data.chart
-          })
+          this.siginValue = res.data.data.percent;
+        console.log(res.data);
+        this.chart = res.data.data.chart
+      })
       }
+
+
     }
   }
 </script>

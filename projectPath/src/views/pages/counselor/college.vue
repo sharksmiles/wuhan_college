@@ -2,7 +2,7 @@
   <div>
     <percent :data="data.percent"></percent>
     <chartLine :data="data.chart"></chartLine>
-    <Col :data="data.table"></Col>
+    <Col :charts="data.charts"></Col>
   </div>
 </template>
 
@@ -20,6 +20,7 @@
         data: {
           percent: {},
           chart: [],
+          charts:[],
           table: [
             {
               config: {nav: "", title: []},
@@ -30,13 +31,12 @@
       }
     },
     mounted() {
-      axios('https://www.easy-mock.com/mock/5b47fcbebad3321130bf0ab0/sigin_copy/department/counselor#!method=get')
+      axios('https://www.easy-mock.com/mock/5b902cd275d00c6196a36b94/example/college#!method=get')
         .then(res => {
-            console.log(res.data);
           this.data.percent = res.data.data.percent;
           this.data.chart.push(...res.data.data.chart);
-          this.data.table = res.data.data.table;
-        })
+      this.data.charts = res.data.data.charts;
+    })
     },
     computed: {
       searchArry() {

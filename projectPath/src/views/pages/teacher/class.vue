@@ -31,10 +31,9 @@
     mounted() {
       axios('https://www.easy-mock.com/mock/5b902cd275d00c6196a36b94/example/class#!method=get')
         .then(res => {
-          // this.data.percent = res.data.data.percent
-          // this.data.chart.push(...res.data.data.chart)
           this.data.table = res.data.data.table
-        })
+      console.log(this.data.table);
+    })
     }
   }
 </script>

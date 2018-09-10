@@ -34,7 +34,7 @@
             url: "/role/college"
           },
           {
-            access: 0,
+            access: 1,
             label: "系部情况",
             icon: "icon-huijihesuan",
             color: "#7ebc59",
@@ -49,12 +49,14 @@
           }, {
             access: 1,
             label: "教师情况",
+            special:true,
             icon: "icon-jiaolian1",
             color: "#fed95c",
             url: "/role/teacher"
           }, {
             access: 1,
             label: "辅导员情况",
+            special:true,
             icon: "icon-person",
             color: "#4695d6",
             url: "/role/counselor"
@@ -67,6 +69,7 @@
             url: "/role/time/class"
           }, {
             access: 2,
+            special:true,
             label: "缺课学生表",
             icon: "icon-error",
             color: "#fed95c",
@@ -102,9 +105,8 @@
 
      // this.xuehao =  getCookie('whxy_xuehao');
       //this.role = getCookie('whxy_role');
-      this.role = 2;
+      this.role = 6;
       // this.gonghao =  getCookie('whxy_gonghao');
-
 
     },
     methods: {

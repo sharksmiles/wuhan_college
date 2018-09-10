@@ -1,8 +1,5 @@
 <template>
   <div>
-    <search :searchArry="searchArry"></search>
-    <percent :data="data.percent"></percent>
-    <chartLine :data="data.chart"></chartLine>
     <Table :data="data.table"></Table>
   </div>
 </template>
@@ -19,8 +16,6 @@
     data() {
       return {
         data: {
-          percent: {},
-          chart: [],
           table: [
             {
               config: {nav: "", title: []},
@@ -31,10 +26,8 @@
       }
     },
     mounted() {
-      axios('https://www.easy-mock.com/mock/5b47fcbebad3321130bf0ab0/sigin_copy/department/counselor#!method=get')
+      axios('https://www.easy-mock.com/mock/5b902cd275d00c6196a36b94/example/counselor#!method=get')
         .then(res => {
-          this.data.percent = res.data.data.percent
-          this.data.chart.push(...res.data.data.chart)
           this.data.table = res.data.data.table
         })
     },

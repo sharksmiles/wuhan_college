@@ -2,7 +2,7 @@
   <div>
     <percent :data="data.percent"></percent>
     <chartLine :data="data.chart"></chartLine>
-    <Col :data="data.table"></Col>
+
   </div>
 </template>
 
@@ -34,7 +34,7 @@
         .then(res => {
           this.data.percent = res.data.data.percent
           this.data.chart.push(...res.data.data.chart)
-          this.data.table = res.data.data.table
+
         })
     },
     computed: {

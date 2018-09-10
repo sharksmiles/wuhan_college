@@ -1,6 +1,6 @@
 <template>
-  <mt-swipe :auto="0" class="tableswiper">
-    <mt-swipe-item v-for="(item, index) in data" :key="index">
+  <mt-swipe :auto="0" class="tableswiper" >
+    <mt-swipe-item v-for="(item, index) in data" :key="index" >
       <Table class="Table" :table="item"></Table>
     </mt-swipe-item>
   </mt-swipe>
@@ -8,11 +8,10 @@
 
 <script>
   import Table from "../chart/table";
-
   export default {
     components: {Table},
     props: ['data'],
-    mounted() {
+    created() {
       try {
         setTimeout(() => {
           document.getElementsByClassName('tableswiper')[0].style.height = document.querySelector('.Table').offsetHeight + 40 + 'px'
@@ -26,7 +25,9 @@
 
 <style scoped>
   .tableswiper {
-    background: white;
+    background:white;
+   overflow: scroll;
+
   }
 </style>
 
