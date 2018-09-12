@@ -25,7 +25,7 @@
   import {getCookie} from '../../../../test/unit/util'
   import {Flexbox, FlexboxItem, Confirm} from 'vux'
   import  bus from '../../../store/eventBus';
-  import Qs from 'qs'
+
   export default {
     components: {Flexbox, FlexboxItem, Confirm},
     data() {

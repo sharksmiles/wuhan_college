@@ -14,7 +14,8 @@ import College from '../views/pages/counselor/college'
 import Department from '../views/pages/counselor/department'
 import err404 from '../views/common/404'
 export default [
-  { path: '/', redirect: 'home', component: index,
+  {
+    path: '/', redirect: 'home', component: index,
     children: [
       { path: 'app', component: AppList },
       { path: 'home', component: home },

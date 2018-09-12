@@ -54,7 +54,8 @@
   import chartCol from "../common/chart/col";
   import percent from "../common/chart/percent";
   import chartSwiper from "../common/swiper/col";
-  import myCourse from "../pages/student/myCourse"
+  import myCourse from "../pages/student/myCourse";
+  import  bus from '../../store/eventBus';
   export default {
     components: {GroupTitle, percent, Flexbox, FlexboxItem, chartLine, chartCol, chartSwiper, swiperLine,myCourse},
     data() {
@@ -62,10 +63,19 @@
         siginValue: {},
         chart: [],
         charts:[],
-        role:'3'
+        role:'3',
+        xuehao:''
       }
     },
+    created(){
+    },
     mounted() {
+      bus.$on("login",function (xue_hao,role) {
+        var _this=this;
+        _this.xuehao=xue_hao
+        _this.role=role;
+        console.log(_this.xuehao,_this.role)
+      })
       if(this.role==3) {
         axios('https://www.easy-mock.com/mock/5b902cd275d00c6196a36b94/example/123321#!method=get')
           .then(res => {
